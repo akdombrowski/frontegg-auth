@@ -10,8 +10,7 @@ export default defineConfig({
   plugins: [
     react(),
     webfontDownload([
-      "https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap",
-      "https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Mukta:wght@200;300;400;500;600;700;800&display=swap",
+      "https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Mukta&display=swap",
     ]),
   ],
   build: {

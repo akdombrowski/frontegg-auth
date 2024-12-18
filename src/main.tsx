@@ -8,14 +8,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/theme";
 
 const contextOptions = {
-  baseUrl: "https://app-im1t98vsyk5p.frontegg.com",
-  // baseUrl: import.meta.env.BASE_URL,
+  // baseUrl: "https://app-im1t98vsyk5p.frontegg.com",
+  baseUrl: import.meta.env.VITE_BASE_URL,
   clientId: import.meta.env.VITE_CLIENT_ID,
   appId: import.meta.env.VITE_APP_ID,
 };
 
 const authOptions = {
-  keepSessionAlive: true, // Uncomment this in order to maintain the session alive
+  keepSessionAlive: true,
 };
 
 createRoot(document.getElementById("root")!).render(

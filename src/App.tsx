@@ -1,4 +1,4 @@
-import { useLoginWithRedirect, ContextHolder, useAuthUser, AdminPortal } from "@frontegg/react";
+import { useLoginWithRedirect, ContextHolder, AdminPortal, useAuth } from "@frontegg/react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
@@ -11,11 +11,14 @@ import { useTheme, alpha } from "@mui/material/styles";
 import ViewData from "@/ViewData";
 
 function App() {
-  // const { user, isAuthenticated } = useAuth();
-  const user = useAuthUser();
+  const { user, isAuthenticated } = useAuth();
+  // const user = useAuthUser();
   const loginWithRedirect = useLoginWithRedirect();
   const theme = useTheme();
 
+
+  console.log(user)
+  console.log(isAuthenticated)
   // useEffect(() => {
   //   if (!isAuthenticated) {
   //     loginWithRedirect();
@@ -53,7 +56,7 @@ function App() {
         </Typography>
 
         {/* if user has logged in */}
-        {user ?
+        {user && isAuthenticated ?
           <Grid
             id="userIsAuthn-Grid"
             size={12}
