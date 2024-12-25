@@ -47,6 +47,7 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "home", "oauth/callback/main.tsx",
   ],
 }

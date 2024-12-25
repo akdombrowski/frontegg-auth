@@ -1,24 +1,19 @@
-import { defineConfig } from "vite";
+import { defineConfig, searchForWorkspaceRoot } from "vite";
 import { resolve } from "path";
 
 import react from "@vitejs/plugin-react";
-import webfontDownload from "vite-plugin-webfont-dl";
 
 // https://vite.dev/config/
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
-  plugins: [
-    react(),
-    webfontDownload([
-      "https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Mukta&display=swap",
-    ]),
-  ],
+  plugins: [react()],
   build: {
     rollupOptions: {
       input: {
-        "main": resolve(__dirname, "index.html"),
+        main: resolve(__dirname, "index.html"),
         200: resolve(__dirname, "200.html"),
-        "oauth/callback": resolve(__dirname, "oauth/callback.html"),
+        // "oauth/callback": resolve(__dirname, "oauth/callback/index.html"),
+        // "home": resolve(__dirname, "home/index.html"),
       },
     },
   },
@@ -26,5 +21,12 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    fs: {
+      // Allow serving files from one level up to the project root
+      allow: [searchForWorkspaceRoot(process.cwd()), "."],
+    },
+    origin: "http://localhost:5173",
   },
 });

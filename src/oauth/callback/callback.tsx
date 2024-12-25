@@ -7,29 +7,29 @@ import Button from "@mui/material/Button";
 
 import { useTheme } from "@mui/material/styles";
 
-import Home from "@/Home";
-
-function App() {
+function OAuthCallback() {
   const { user, isAuthenticated } = useAuth();
   const loginWithRedirect = useLoginWithRedirect();
   const theme = useTheme();
 
-  // useEffect(() => {
-  //   if (!isAuthenticated) {
-  //     loginWithRedirect();
-  //   } else {
-  //     console.log(user);
-  //   }
-  // }, [isAuthenticated]);
+  console.log();
+  console.log("callback.tsx");
+  console.log("new URL(import.meta.url):", new URL(import.meta.url));
+  console.log("new URL(import.meta.url).origin:", new URL(import.meta.url).origin);
+  console.log("import.meta.url:", import.meta.url);
+  console.log("home url:", new URL("home", import.meta.url).href);
+  console.log();
+  console.log("callback.tsx");
 
-  return (
-    <Container
-      maxWidth={false}
-      sx={{ backgroundColor: "#000", height: "100vh", py: "1.5rem" }}
-    >
-      {user && isAuthenticated ?
-        <Home />
-      : <Stack
+  if (user && isAuthenticated) {
+    window.location.href = new URL("home", import.meta.url).href;
+  } else {
+    return (
+      <Container
+        maxWidth={false}
+        sx={{ backgroundColor: "#000", height: "100vh" }}
+      >
+        <Stack
           direction="column"
           overflow="hidden"
           spacing={1}
@@ -58,9 +58,9 @@ function App() {
             </Grid>
           </Grid>
         </Stack>
-      }
-    </Container>
-  );
+      </Container>
+    );
+  }
 }
 
-export default App;
+export default OAuthCallback;
