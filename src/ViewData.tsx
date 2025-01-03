@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
 
-import type { User as ViewData } from "@frontegg/redux-store";
+import type { User } from "@frontegg/redux-store";
 import ViewDetailsBtn from "./ViewDetailsBtn";
 
 function ViewData({
@@ -14,7 +14,7 @@ function ViewData({
   label,
   data,
 }: {
-  user: ViewData;
+  user: User;
   maxHeight: number | string;
   xpandBtnTxt: string;
   label: string;
@@ -32,7 +32,12 @@ function ViewData({
         justifyContent="flex-start"
       >
         <Grid size={12}>
-          <Typography variant="subtitle1" color="textPrimary">{label}:</Typography>
+          <Typography
+            variant="subtitle1"
+            color="textPrimary"
+          >
+            {label}:
+          </Typography>
         </Grid>
 
         {viewData && (

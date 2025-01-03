@@ -28,7 +28,7 @@ function App() {
       sx={{ backgroundColor: "#000", height: "100vh", py: "1.5rem" }}
     >
       {user && isAuthenticated ?
-        <Home />
+        <Home user={user} isAuthenticated={isAuthenticated} />
       : <Stack
           direction="column"
           overflow="hidden"

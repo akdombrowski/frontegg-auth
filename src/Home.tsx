@@ -1,18 +1,17 @@
-import { useAuthUser, ContextHolder, AdminPortal } from "@frontegg/react";
+import { ContextHolder, AdminPortal } from "@frontegg/react";
+import type { User } from "@frontegg/redux-store";
+
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-
 import { useTheme, alpha } from "@mui/material/styles";
 
 import ViewData from "@/ViewData";
 
-function Home() {
-  // const { user, isAuthenticated } = useAuth();
-  const user = useAuthUser();
+function Home({ user, isAuthenticated }: { user: User; isAuthenticated: boolean; }) {
   const theme = useTheme();
 
   const logout = () => {
@@ -27,8 +26,11 @@ function Home() {
     window.location.href = new URL("/", currURL.origin).href;
   };
 
-  if (!user) {
-    redirectToRoot();
+  if (!user || !isAuthenticated) {
+    // redirectToRoot();
+    console.log(import.meta.url);
+    console.log("not authenticated");
+    logout();
   } else {
     return (
       <Container
